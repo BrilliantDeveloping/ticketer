@@ -25,7 +25,7 @@ development:
   host: ldap.forumsys.com
   port: 389
   attribute: uid
-  base: ou=mathematicians,dc=example,dc=com
+  base: dc=example,dc=com
  # admin_user: cn=read-only-admin,dc=example,dc=com
  # admin_password: password
   ssl: false

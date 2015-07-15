@@ -4,15 +4,14 @@
 # environment if you need something different per enviornment.
 authorizations: &AUTHORIZATIONS
   allow_unauthenticated_bind: false
-  group_base: ou=groups,dc=test,dc=com
+  group_base: OU=Internal,OU=NewUsers,DC=ohmc,DC=org
   ## Requires config.ldap_check_group_membership in devise.rb be true
   # Can have multiple values, must match all to be authorized
   required_groups:
     # If only a group name is given, membership will be checked against "uniqueMember"
-    - cn=admins,ou=groups,dc=test,dc=com
-    - cn=users,ou=groups,dc=test,dc=com
+    - OU=Internal,OU=NewUsers,DC=ohmc,DC=org
     # If an array is given, the first element will be the attribute to check against, the second the group name
-    - ["moreMembers", "cn=users,ou=groups,dc=test,dc=com"]
+  # - ["moreMembers", "cn=users,ou=groups,dc=test,dc=com"]
   ## Requires config.ldap_check_attributes in devise.rb to be true
   ## Can have multiple attributes and values, must match all to be authorized
   require_attribute:
@@ -22,12 +21,12 @@ authorizations: &AUTHORIZATIONS
 ## Environment
 
 development:
-  host: ldap.forumsys.com
+  host: ohmcad2.ohmc.org
   port: 389
-  attribute: uid
-  base: dc=example,dc=com
- # admin_user: cn=read-only-admin,dc=example,dc=com
- # admin_password: password
+  attribute: mail #sAMAccountName
+  base: OU=Internal,OU=NewUsers,DC=ohmc,DC=org
+  #admin_user: CN=Richard Brown,OU=Internal,OU=NewUsers,DC=ohmc,DC=org
+  #admin_password: Seairick21
   ssl: false
   # <<: *AUTHORIZATIONS
 

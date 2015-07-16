@@ -1,12 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<span class="label label-default">Default</span>
-<span class="label label-primary">Primary</span>
-<span class="label label-success">Success</span>
-<span class="label label-info">Info</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
-
 <h1>Listing Tickets</h1>
 
 <div class="panel panel-default">
@@ -20,6 +13,8 @@
         <th>Priority</th>
         <th>User</th>
         <th>Assignee</th>
+        <th>Last Updated</th>
+        <th>Ticket age</th>
       </tr>
     </thead>
 
@@ -27,10 +22,12 @@
       <% @tickets.each do |ticket| %>
         <tr>
           <td><%= link_to ticket.subject, ticket %></td>
-          <td><%= ticket.status %></td>
-          <td><%= ticket.priority %><span class="label label-default">Default</span></td>
+          <td><%= labels('status', ticket) %></td>
+          <td><%= labels('priority', ticket) %></td>
           <td><%= ticket.user_id %></td>
           <td><%= ticket.assignee_id %></td>
+          <td><%= time_ago_in_words(ticket.updated_at) %> ago</td>
+          <td><%= time_ago_in_words(ticket.created_at) %></td>
         </tr>
       <% end %>
     </tbody>

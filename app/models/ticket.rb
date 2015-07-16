@@ -1,6 +1,6 @@
 class Ticket < ActiveRecord::Base
   
-  def self.priority 
+  def self.priority
     {
       1 => 'Low',
       2 => 'Medium',

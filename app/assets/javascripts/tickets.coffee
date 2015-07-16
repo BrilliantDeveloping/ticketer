@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ->
+  # Priorities
+  $('.priority1').addClass ''
+  $('.priority2').addClass 'label-primary'
+  $('.priority3').addClass 'label-warning'
+  $('.priority4').addClass 'label-danger'
+  # Statuses
+  $('.status1').addClass 'label-default'
+  $('.status2').addClass ''
+  $('.status3').addClass 'label-warning'
+  $('.status4').addClass 'label-info'
+  $('.status5').addClass 'label-primary'
+  $('.status6').addClass 'label-success'

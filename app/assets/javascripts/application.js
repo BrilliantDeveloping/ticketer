@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require flat-ui
+//= require jquery-ui
+//= require bootstrap
+//= require icheck.min
+//= require bootflat_icheck
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .

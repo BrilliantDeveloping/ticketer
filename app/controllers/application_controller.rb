@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
-  rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
-    render :text => exception, :status => 500
-  end
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  rescue_from DeviseLdapAuthenticatable::LdapException do |exc|
+    render text: exc, status: 500
+  end 
   protect_from_forgery with: :exception
+  
+  before_action :set_model_name
+  
+  def set_model_name
+    @m = Kernel.const_get(controller_name.classify)
+  end
+  
 end

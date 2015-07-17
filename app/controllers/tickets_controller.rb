@@ -1,11 +1,16 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.order(:created_at).reverse_order
+    
+    @tickets = @tickets.by_user_id(params[:user])
+      .by_assignee_id(params[:assignee])
+      .by_priority(params[:priority])
+      .by_status(params[:status])
   end
 
   # GET /tickets/1

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :ldap_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
+  has_many :tickets
          
 #   def ldap_before_save
 #     self.userid = Devise::LDAP::Adapter.get_ldap_param(self.login,"cn").first

@@ -1,13 +1,35 @@
 <div class="sidenavbar">
   <div class="container">
+    
     <div class="list-group">
       <a href="#" class="list-group-item active">
-        Cras justo odio
+        My Tickets
       </a>
-      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <%= link_to 'Tickets I Created', 
+          tickets_path(user: current_user.id), 
+          class: 'list-group-item' %>
+      
+      <%= link_to 'My Open Tickets', 
+          tickets_path(assignee: current_user.id, status: 'open'), 
+          class: 'list-group-item' %>
+      
+      <%= link_to 'My Closed Tickets', 
+          tickets_path(assignee: current_user.id, status: 'closed'), 
+          class: 'list-group-item' %>
     </div>
+    
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        All Tickets
+      </a>
+      <%= link_to 'All Open Tickets', 
+          tickets_path(assignee: current_user.id), 
+          class: 'list-group-item' %>
+      
+      <%= link_to 'All Closed Tickets', 
+          tickets_path(status: 6), 
+          class: 'list-group-item' %>
+    </div>
+    
   </div>
 </div>

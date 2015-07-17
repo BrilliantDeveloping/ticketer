@@ -8,6 +8,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>Ticket #</th>
         <th>Subject</th>
         <th>Status</th>
         <th>Priority</th>
@@ -21,9 +22,18 @@
     <tbody>
       <% @tickets.each do |ticket| %>
         <tr>
+          <td></td>
           <td><%= link_to ticket.subject, ticket %></td>
-          <td><%= labels('status', ticket) %></td>
-          <td><%= labels('priority', ticket) %></td>
+          <td>
+            <%= link_to tickets_path(status: ticket.status) do %>
+              <%= labels('status', ticket) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to tickets_path(priority: ticket.priority) do %>
+              <%= labels('priority', ticket) %>
+            <% end %>
+          </td>
           <td><%= ticket.user_id %></td>
           <td><%= ticket.assignee_id %></td>
           <td><%= time_ago_in_words(ticket.updated_at) %> ago</td>
@@ -37,3 +47,5 @@
 <br>
 
 <%= link_to 'New Ticket', new_ticket_path %>
+
+

@@ -11,4 +11,15 @@ module ApplicationHelper
     end
   end
   
+  def two_part_number(value)
+    one = value.split('.').first
+    two = value.split('.').last
+    (
+      '<span class="two-part-number">'+
+        '<span class="part1">'+one+'</span>.'+
+        '<span class="part2">'+two+'</span>'+
+      '</span>'
+    ).html_safe
+  end
+  
 end

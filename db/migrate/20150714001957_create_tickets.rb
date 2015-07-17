@@ -1,6 +1,7 @@
 class CreateTickets < ActiveRecord::Migration
   def change
     create_table :tickets do |t|
+      t.string :number
       t.string :subject
       t.text :content
       t.integer :status
@@ -10,6 +11,7 @@ class CreateTickets < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :tickets, :number
     add_index :tickets, :status
     add_index :tickets, :priority
     add_index :tickets, :user_id

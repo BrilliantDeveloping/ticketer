@@ -4,6 +4,12 @@
     top:70px; 
     bottom:0;
     left:0;
-    width:200px;
+    width:220px;
+    & .list-group {
+      & span {
+        float:right;
+        padding:5px 7px;
+      }
+    }
   }
 }

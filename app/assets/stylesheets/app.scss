@@ -1,3 +1,14 @@
 body {
-  padding:50px 20px 20px 220px;
+  padding:50px 20px 20px 240px;
+}
+
+.two-part-number {
+  color:#555;
+  & .part1 {
+
+  }
+
+  & .part2 {
+    font-weight:bold;  
+  }
 }

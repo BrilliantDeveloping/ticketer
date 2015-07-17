@@ -11,3 +11,5 @@ $(document).ready ->
   $('.status4').addClass 'label-info'
   $('.status5').addClass 'label-primary'
   $('.status6').addClass 'label-success'
+  
+  $("select").selecter("enable", "1")

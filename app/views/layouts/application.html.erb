@@ -4,13 +4,13 @@
   <title>Ticketer</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="jquery.fs.selecter.css" rel="stylesheet">
+  <script src="jquery.fs.selecter.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <%= render 'layouts/topnavbar' %>
   <%= render 'layouts/sidenavbar' %>
   <%= yield %>
-
 </body>
 </html>

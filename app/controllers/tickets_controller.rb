@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.order(:created_at).reverse_order
+    @tickets = Ticket.order(:number).reverse_order
     
     @tickets = @tickets.by_user_id(params[:user])
       .by_assignee_id(params[:assignee])

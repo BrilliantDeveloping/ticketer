@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20150714003205) do
 
   create_table "tickets", force: :cascade do |t|
+    t.string   "number"
     t.string   "subject"
     t.text     "content"
     t.integer  "status"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150714003205) do
   end
 
   add_index "tickets", ["assignee_id"], name: "index_tickets_on_assignee_id"
+  add_index "tickets", ["number"], name: "index_tickets_on_number"
   add_index "tickets", ["priority"], name: "index_tickets_on_priority"
   add_index "tickets", ["status"], name: "index_tickets_on_status"
   add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"

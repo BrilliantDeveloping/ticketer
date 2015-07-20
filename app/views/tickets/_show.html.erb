@@ -1,0 +1,45 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">bkjn</h4>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>Subject:</strong>
+        <%= @ticket.subject %>
+      </p>
+
+      <p>
+        <strong>Content:</strong>
+        <%= @ticket.content %>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <%= @ticket.status %>
+      </p>
+
+      <p>
+        <strong>Priority:</strong>
+        <%= @ticket.priority %>
+      </p>
+
+      <p>
+        <strong>User:</strong>
+        <%= @ticket.user_id %>
+      </p>
+
+      <p>
+        <strong>Assignee:</strong>
+        <%= @ticket.assignee_id %>
+      </p>
+
+      <%= link_to 'Edit', edit_ticket_path(@ticket) %> | 
+      <%= link_to 'Destroy', @ticket, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Back', tickets_path %>
+    </div>
+  </div>
+</div>

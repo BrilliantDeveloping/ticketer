@@ -3,6 +3,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
   belongs_to :assignee, class_name: 'User'
   before_create :ticket_number
+  before_save :fill_in_subject
   
   # Ticket states
   def self.open
@@ -51,6 +52,12 @@ class Ticket < ActiveRecord::Base
       t[1..6] != d ? n = 1 : n = t[8..10].to_i + 1
     end
     self.number = 'T'+d+'.'+sprintf('%03d', n)
+  end
+  
+  def fill_in_subject
+    if self.subject.blank?
+      self.subject = self.content.truncate_words(15)
+    end
   end
   
   # Scopes

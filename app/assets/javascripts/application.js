@@ -17,3 +17,13 @@
 //= require bootflat_icheck
 //= require jquery_ujs
 //= require_tree .
+  
+$(function () {
+  $("[rel='tooltip']").tooltip();
+});
+
+$(function () {
+  $("[rel='popover']").popover({ 
+		html : true
+	});
+});

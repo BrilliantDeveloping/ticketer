@@ -1,10 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <h2 class="pull-left">Listing Tickets</h2>
 
 <div class="page-tools">
   <div class="btn-group pull-right">
-    <%= link_to 'New Ticket', express_tickets_path, class: 'btn btn-primary', type: 'button' %>
+    <%= link_to 'Create Ticket', express_tickets_path, 
+        class: 'btn btn-primary', type: 'button', id: "modal_path" %>
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="caret"></span>
       <span class="sr-only">Toggle Dropdown</span>
@@ -20,7 +19,7 @@
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
+  <div class="panel-heading">.</div>
   <table class="table">
     <thead>
       <tr>
@@ -38,7 +37,7 @@
       <% @tickets.each do |ticket| %>
         <tr>
           <td><%= two_part_number(ticket.number) %></td>
-          <td><%= link_to ticket.subject, ticket %></td>
+          <td><%= link_to ticket.subject, ticket, remote: true, data: { toggle: 'modal', target: '#modal-display' } %></td>
           <td>
             <%= link_to tickets_path(status: ticket.status) do %>
               <%= labels('status', ticket) %>
@@ -56,4 +55,20 @@
       <% end %>
     </tbody>
   </table>
+</div>
+
+
+
+
+
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".show-ticket">Large modal</button>
+
+
+
+
+
+<div class="modal" id="modal-display" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  
 </div>

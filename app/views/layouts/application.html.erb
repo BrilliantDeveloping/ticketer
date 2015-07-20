@@ -9,8 +9,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'layouts/topnavbar' %>
-  <%= render 'layouts/sidenavbar' %>
+  <% if user_signed_in? %>
+    <%= render 'layouts/topnavbar' %>
+    <%= render 'layouts/sidenavbar' %>
+  <% end %>
   <%= yield %>
 </body>
 </html>

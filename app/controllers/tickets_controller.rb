@@ -22,6 +22,11 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
   end
+  
+  # GET /tickets/express
+  def express
+    @ticket = Ticket.new
+  end
 
   # GET /tickets/1/edit
   def edit

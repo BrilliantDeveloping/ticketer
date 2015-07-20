@@ -1,6 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tickets</h1>
+<h2 class="pull-left">Listing Tickets</h2>
+
+<div class="page-tools">
+  <div class="btn-group pull-right">
+    <%= link_to 'New Ticket', express_tickets_path, class: 'btn btn-primary', type: 'button' %>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'New Express Ticket', express_tickets_path %></li>
+      <li><%= link_to 'New Advanced Ticket', new_ticket_path %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="clearfix"></div>
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -8,12 +24,11 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Ticket #</th>
+        <th>Ticket Number</th>
         <th>Subject</th>
         <th>Status</th>
         <th>Priority</th>
-        <th>User</th>
-        <th>Assignee</th>
+        <th>Assigned to</th>
         <th>Last Updated</th>
         <th>Ticket age</th>
       </tr>
@@ -34,8 +49,7 @@
               <%= labels('priority', ticket) %>
             <% end %>
           </td>
-          <td><%= ticket.user_id %></td>
-          <td><%= ticket.assignee_id %></td>
+          <td><%= ticket.assignee.username %></td>
           <td><%= time_ago_in_words(ticket.updated_at) %> ago</td>
           <td><%= time_ago_in_words(ticket.created_at) %></td>
         </tr>
@@ -43,9 +57,3 @@
     </tbody>
   </table>
 </div>
-
-<br>
-
-<%= link_to 'New Ticket', new_ticket_path %>
-
-

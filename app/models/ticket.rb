@@ -2,6 +2,8 @@ class Ticket < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :assignee, class_name: 'User'
+  has_many :comments, as: :commentable
+  
   before_create :ticket_number
   before_save :fill_in_subject
   
@@ -36,7 +38,7 @@ class Ticket < ActiveRecord::Base
       1 => 'New',
       2 => 'Dispatched',
       3 => 'In Progress',
-      4 => 'Escalate',
+      4 => 'Escalated',
       5 => 'Waiting',
       6 => 'Complete'
     }

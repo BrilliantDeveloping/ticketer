@@ -8,12 +8,11 @@ class ApplicationController < ActionController::Base
   
   before_action :set_model_name, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
-
   
   protected
   
   def set_model_name
-    @m = Kernel.const_get(controller_name.classify)
+    @m = (controller_name.classify).constantize # or Kernel.const_get
   end
 
   def configure_permitted_parameters

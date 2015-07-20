@@ -1,8 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  
-  respond_to :html, :js
 
   # GET /tickets
   # GET /tickets.json
@@ -18,7 +16,9 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
-    respond_with(@ticket)
+    @commentable = @ticket
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   # GET /tickets/new
@@ -47,7 +47,7 @@ class TicketsController < ApplicationController
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to tickets_url, notice: 'Ticket was successfully created.' }
-        format.json { render :index, status: :created, location: @ticket }
+        format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -60,8 +60,8 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to tickets_url, notice: 'Ticket was successfully updated.' }
-        format.json { render :index, status: :ok, location: @ticket }
+        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.json { render :show, status: :ok, location: @ticket }
       else
         format.html { render :edit }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -87,6 +87,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:subject, :content, :status, :priority, :user_id, :assignee_id)
+      params.require(:ticket).permit(:subject, :content, :status, :priority, :user_id, :assignee_id, :comment)
     end
 end

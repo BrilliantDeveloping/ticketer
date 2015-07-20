@@ -14,6 +14,10 @@ h1, h2, h3, h4 {
   margin-top:8px;
 }
 
+.left-border {
+  border-left:2px solid #ccc;
+}
+
 .two-part-number {
   color:#555;
   & .part1 {

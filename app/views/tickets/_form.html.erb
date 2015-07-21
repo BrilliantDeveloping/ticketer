@@ -3,20 +3,17 @@
 
   <div class="form-inputs">
     <%= f.input :subject, 
-        as: :hidden if express_ticket %>
+        as: express_ticket? %>
     
     <%= f.input :content %>
     
     <%= f.input :status, 
-        collection: select('status'),
-        as: :hidden if express_ticket %>
+        collection: select('status'), 
+        as: express_ticket? %>
     
     <%= f.input :priority, 
         collection: select('priority'), 
-        as: :hidden if express_ticket %>
-    
-    <%= f.input :user_id,
-        as: :hidden if express_ticket%>
+        as: express_ticket? %>
     
     <%= f.input :assignee_id %>
   </div>
@@ -24,4 +21,5 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
 <% end %>

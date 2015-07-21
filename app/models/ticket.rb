@@ -1,8 +1,9 @@
-class Ticket < ActiveRecord::Base
-  
+class Ticket < ActiveRecord::Base  
   belongs_to :user
   belongs_to :assignee, class_name: 'User'
   has_many :comments, as: :commentable
+  
+ # validates_presence_of :status, 
   
   before_create :ticket_number
   before_save :fill_in_subject
@@ -56,6 +57,7 @@ class Ticket < ActiveRecord::Base
     self.number = 'T'+d+'.'+sprintf('%03d', n)
   end
   
+  # Ticket shortcuts
   def fill_in_subject
     if self.subject.blank?
       self.subject = self.content.truncate_words(15)

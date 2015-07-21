@@ -1,13 +1,12 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-  </div>
+  <div class="panel-heading">Notes & Comments</div>
   <ul class="list-group">
-    <% @comments.each do |comment| %>
+    <%# @comments.each do |comment| %>
       <li class="list-group-item">
-        <%= simple_format comment.content %>
+        <%#= simple_format comment.content %>
+        <%= render @comments %>
       </li>
-    <% end %>
+    <%# end %>
     <li class="list-group-item">
       <%= render 'comments/form' %>
     </li>

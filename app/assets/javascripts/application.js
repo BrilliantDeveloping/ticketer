@@ -24,6 +24,6 @@ $(function () {
 
 $(function () {
   $("[rel='popover']").popover({ 
-		html : true
-	});
+    html : true
+  });
 });

@@ -7,10 +7,12 @@
     <%= render "comments/comments" %>
   </div>
   <div class="col-md-3 left-border">
-    <p>Created by: <strong><%= @ticket.user.username %></strong></p>
+    <p><label>Created by:</label><strong><%= @ticket.user.username %></strong></p>
     <p>Assigned to: <strong><%= @ticket.assignee.username %></strong></p>
-    <p>Status: <%= labels('status', @ticket) %></p>
-    <p>Priority: <%= labels('priority', @ticket) %></p>
+    <hr>
+    <p><%= labels('status', @ticket) %></p>
+    <p><%= labels('priority', @ticket) %></p>
+    <hr>
     <p><%= link_to 'Edit Ticket', edit_ticket_path(@ticket), class: 'btn btn-default' %></p>
   </div>
 </div>

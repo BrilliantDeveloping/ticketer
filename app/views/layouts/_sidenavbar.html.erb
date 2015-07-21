@@ -10,7 +10,7 @@
       <%= link_to tickets_path(user: current_user.id), 
         class: 'list-group-item' do %> 
         Tickets I Created
-        <span class="label">
+        <span class="badge">
           <%= current_user.tickets.count %>
         </span>
       <% end %>
@@ -18,7 +18,7 @@
       <%= link_to tickets_path(assignee: current_user.id, status: 'open'), 
         class: 'list-group-item' do %> 
         My Open Tickets
-        <span class="label">
+        <span class="badge">
           <%= @m.assigned(current_user.id).open.count %>
         </span>
       <% end %>
@@ -26,7 +26,7 @@
       <%= link_to tickets_path(assignee: current_user.id, status: 'closed'), 
         class: 'list-group-item' do %> 
         My Closed Tickets
-        <span class="label">
+        <span class="badge">
           <%= @m.assigned(current_user.id).closed.count %>
         </span>
       <% end %>
@@ -40,7 +40,7 @@
       <%= link_to tickets_path(priority: 'severe'), 
         class: 'list-group-item' do %> 
         Severe Tickets
-        <span class="label">
+        <span class="badge">
           <%= @m.severe.count %>
         </span>
       <% end %> 
@@ -48,7 +48,7 @@
       <%= link_to tickets_path(status: 'open'), 
         class: 'list-group-item' do %> 
         All Open Tickets
-        <span class="label">
+        <span class="badge">
           <%= @m.open.count %>
         </span>
       <% end %>      
@@ -56,7 +56,7 @@
       <%= link_to tickets_path(status: 'closed'), 
         class: 'list-group-item' do %> 
         All Closed Tickets
-        <span class="label">
+        <span class="badge">
           <%= @m.closed.count %>
         </span>
       <% end %>

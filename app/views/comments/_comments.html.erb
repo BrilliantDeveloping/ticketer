@@ -1,7 +1,15 @@
-<div id="comments">
-  <% @comments.each do |comment| %>
-    <div class="comment">
-      <%= simple_format comment.content %>
-    </div>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">Panel heading</div>
+  <div class="panel-body">
+  </div>
+  <ul class="list-group">
+    <% @comments.each do |comment| %>
+      <li class="list-group-item">
+        <%= simple_format comment.content %>
+      </li>
+    <% end %>
+    <li class="list-group-item">
+      <%= render 'comments/form' %>
+    </li>
+  </ul>
 </div>

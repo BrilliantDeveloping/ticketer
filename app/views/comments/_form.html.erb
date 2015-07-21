@@ -1,19 +1,9 @@
-<%= form_for [@commentable, @comment] do |f| %>
-  <% if @comment.errors.any? %>
-    <div class="error_messages">
-      <h2>Please correct the following errors.</h2>
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for [@commentable, @comment], remote: true do |f| %>
+  <%= f.error_notification %>
 
-  <div class="field">
-    <%= f.text_area :content, rows: 8 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+<%= f.input :content, label: false, placeholder: 'Type a new comment here and press enter to save' %>
+  
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

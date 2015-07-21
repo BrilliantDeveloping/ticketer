@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     @commentable = @ticket
-    @comments = @commentable.comments
+    @comments = @commentable.comments.order(:created_at).reverse_order
     @comment = Comment.new
   end
 

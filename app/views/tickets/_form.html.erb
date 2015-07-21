@@ -2,13 +2,22 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :subject unless express_ticket %>
+    <%= f.input :subject, 
+        as: :hidden if express_ticket %>
+    
     <%= f.input :content %>
-    <% unless express_ticket %>
-      <%= f.input :status, collection: select('status') %>
-      <%= f.input :priority, collection: select('priority') %>
-      <%= f.input :user_id %>
-    <% end %>
+    
+    <%= f.input :status, 
+        collection: select('status'),
+        as: :hidden if express_ticket %>
+    
+    <%= f.input :priority, 
+        collection: select('priority'), 
+        as: :hidden if express_ticket %>
+    
+    <%= f.input :user_id,
+        as: :hidden if express_ticket%>
+    
     <%= f.input :assignee_id %>
   </div>
 

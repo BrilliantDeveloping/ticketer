@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd APPS/rubbermaid &&
+bundle install &&
+rails server
